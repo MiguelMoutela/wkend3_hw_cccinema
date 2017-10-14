@@ -51,7 +51,7 @@ class Customer
     return nil
   end
 
-  def movies()
+  def movies
     sql = "SELECT movies.*
            FROM movies
            INNER JOIN tickets
@@ -65,4 +65,27 @@ class Customer
 
 
 
-end
+  def pay(movie)
+  if movie.price > @funds
+    return 'not enough funds'
+  else
+    @funds -= movie.price
+    update()
+  end
+  #   this could be a pay-all method but does not work.. I think the movie in movies is not accessing the movies method.
+  #   sql = "UPDATE customers
+  #         SET funds = ($1)
+  #         WHERE id = ($2)"
+  #   bill = []
+  #   for movie in movies
+  #    bill.push(movies[:price])
+  #   end
+  #    total = bill.sum
+  #   @funds -= total
+  #   values = [@funds, @id]
+  #   result = SqlRunner.run(sql, values)
+  #   return nil
+
+  end
+
+  end

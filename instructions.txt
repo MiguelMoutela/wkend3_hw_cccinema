@@ -12,7 +12,7 @@ Your app should have:
 name
 funds
 
-- movies
+- Movies
 
 title
 price
