@@ -66,12 +66,12 @@ class Customer
 
 
   def pay(movie)
-  if movie.price > @funds
-    return 'not enough funds'
-  else
-    @funds -= movie.price
-    update()
-  end
+    if movie.price > @funds
+      return 'not enough funds'
+    else
+      @funds -= movie.price
+      update()
+    end
   #   this could be a pay-all method but does not work.. I think the movie in movies is not accessing the movies method.
   #   sql = "UPDATE customers
   #         SET funds = ($1)
@@ -88,4 +88,4 @@ class Customer
 
   end
 
-  end
+end
