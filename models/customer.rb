@@ -66,12 +66,14 @@ class Customer
 
 
   def pay(movie)
+    #it took me far too long to remember that the customer object knows its funds - no sql is required
     if movie.price > @funds
       return 'not enough funds'
     else
       @funds -= movie.price
       update()
     end
+  end
   #   this could be a pay-all method but does not work.. I think the movie in movies is not accessing the movies method.
   #   sql = "UPDATE customers
   #         SET funds = ($1)
@@ -86,6 +88,14 @@ class Customer
   #   result = SqlRunner.run(sql, values)
   #   return nil
 
+  def tickets_bought
+    sql = "SELECT customers.* FROM customers
+           INNER JOIN tickets
+           ON customers.id = tickets.customer_id
+           WHERE customer_id = $1"
+    values = [@id]
+    number_of_tickets = SqlRunner.run(sql, values).count()
+    return number_of_tickets
   end
 
 end
