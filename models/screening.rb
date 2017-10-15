@@ -11,4 +11,6 @@ class Screening
     @screening_time = options['screening_time']
   end
 
+  
+
 end
