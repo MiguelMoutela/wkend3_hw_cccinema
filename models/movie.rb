@@ -75,4 +75,6 @@ class Movie
     number_of_tickets = SqlRunner.run(sql, values).count()
     return number_of_tickets
   end
+
+
 end
