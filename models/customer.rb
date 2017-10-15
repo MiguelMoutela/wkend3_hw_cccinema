@@ -94,6 +94,7 @@ class Customer
            ON customers.id = tickets.customer_id
            WHERE customer_id = $1"
     values = [@id]
+    SqlRunner.run(sql, values)
     number_of_tickets = SqlRunner.run(sql, values).count()
     return number_of_tickets
   end
